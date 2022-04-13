@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Password Generator by Roman</title>
+    <link
+      href="./node_modules/bootstrap/dist/css/bootstrap.css"
+      rel="stylesheet"
+    />
+    <style>
+      .hidden {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body class="bg-dark">
+    <nav class="navbar bg-secondary navbar-secondary">
+      <span class="brand mx-auto h1"> Password Generator </span>
+    </nav>
+    <div
+      id="login"
+      class="container d-flex flex-column justify-content-center w-100"
+    >
+      <h1 class="text-secondary text-center w-50 mt-5 align-self-center">
+        Which website are you logging into?
+      </h1>
+      <div class="text-center my-5">
+        <input id="isSite" type="text" />
+        <br />
+        <button
+          id="login-btn"
+          class="px-4 py-2 my-5 btn btn-secondary text-dark"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+    <div
+      id="username"
+      class="container hidden d-flex flex-column justify-content-center w-100"
+    >
+      <h1 class="text-secondary text-center w-50 mt-5 align-self-center">
+        Username for this site?
+      </h1>
+      <div class="text-center my-5">
+        <input id="isName" type="text" />
+        <br />
+        <button
+          id="user-btn"
+          class="px-4 py-2 my-5 btn btn-secondary text-dark"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+    <div
+      id="generator"
+      class="container hidden d-flex flex-column justify-content-center"
+    >
+      <div
+        id="print"
+        class="container d-flex flex-column justify-content-center"
+      >
+        <h1 id="site" class="text-secondary align-self-center my-5">
+          Password
+        </h1>
+        <h2 id="user" class="text-secondary align-self-center">Username</h2>
+        <h2 id="genPass" class="text-secondary align-self-center my-3">
+          Press the Generate Button
+        </h2>
+      </div>
+      <button
+        id="genBtn"
+        class="btn btn-secondary align-self-center text-dark mt-3 w-30"
+      >
+        Generate Password
+      </button>
+      <button id="openDir" class="btn btn-secondary align-self-center text-dark mt-3 w-30">
+        Show Saved Passwords
+    </button>
+      <button
+        id="pdf"
+        class="btn btn-secondary align-self-center text-dark mt-3 w-30"
+      >
+        Save to PDF
+      </button>
+      
+      <button
+        class="btn btn-secondary align-self-center text-dark my-3 w-30"
+        onClick="window.location.reload();">Again</button>
+
+    <script src="passgen.js"></script>
+    <script src="ui.js"></script>
+    <script>
+        const {shell} = require('electron')
+        const rootPath = require('electron-root-path').rootPath;
+        const openDir = document.getElementById('openDir')
+        
+        openDir.addEventListener('click', () => shell.openPath(`${rootPath}\\passwords`))
+    </script>
+  </body>
+</html>
